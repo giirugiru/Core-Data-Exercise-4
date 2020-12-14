@@ -9,23 +9,23 @@
 /* Begin PBXBuildFile section */
 		BA3057862583F7E400AEA177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3057852583F7E400AEA177 /* AppDelegate.swift */; };
 		BA3057882583F7E400AEA177 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3057872583F7E400AEA177 /* SceneDelegate.swift */; };
-		BA30578A2583F7E400AEA177 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3057892583F7E400AEA177 /* ViewController.swift */; };
 		BA30578D2583F7E400AEA177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA30578B2583F7E400AEA177 /* Main.storyboard */; };
 		BA3057902583F7E400AEA177 /* Core_Data_Exercise_4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA30578E2583F7E400AEA177 /* Core_Data_Exercise_4.xcdatamodeld */; };
 		BA3057922583F7E700AEA177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA3057912583F7E700AEA177 /* Assets.xcassets */; };
 		BA3057952583F7E700AEA177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA3057932583F7E700AEA177 /* LaunchScreen.storyboard */; };
+		BA30579E2584A69400AEA177 /* TargetTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA30579D2584A69300AEA177 /* TargetTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BA3057822583F7E400AEA177 /* Core Data Exercise 4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Data Exercise 4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA3057852583F7E400AEA177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA3057872583F7E400AEA177 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BA3057892583F7E400AEA177 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BA30578C2583F7E400AEA177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA30578F2583F7E400AEA177 /* Core_Data_Exercise_4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Core_Data_Exercise_4.xcdatamodel; sourceTree = "<group>"; };
 		BA3057912583F7E700AEA177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA3057942583F7E700AEA177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA3057962583F7E700AEA177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA30579D2584A69300AEA177 /* TargetTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,7 @@
 			children = (
 				BA3057852583F7E400AEA177 /* AppDelegate.swift */,
 				BA3057872583F7E400AEA177 /* SceneDelegate.swift */,
-				BA3057892583F7E400AEA177 /* ViewController.swift */,
+				BA30579D2584A69300AEA177 /* TargetTableVC.swift */,
 				BA30578B2583F7E400AEA177 /* Main.storyboard */,
 				BA3057912583F7E700AEA177 /* Assets.xcassets */,
 				BA3057932583F7E700AEA177 /* LaunchScreen.storyboard */,
@@ -140,7 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA30578A2583F7E400AEA177 /* ViewController.swift in Sources */,
+				BA30579E2584A69400AEA177 /* TargetTableVC.swift in Sources */,
 				BA3057862583F7E400AEA177 /* AppDelegate.swift in Sources */,
 				BA3057882583F7E400AEA177 /* SceneDelegate.swift in Sources */,
 				BA3057902583F7E400AEA177 /* Core_Data_Exercise_4.xcdatamodeld in Sources */,
