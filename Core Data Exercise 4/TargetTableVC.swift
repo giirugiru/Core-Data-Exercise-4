@@ -9,6 +9,8 @@ import UIKit
 import CoreData
 
 // This project is using UITableViewController
+// MARK: LAST UPDATE 15 DEC 10.53
+
 class TargetTableVC: UITableViewController {
     
     // To append sample data, only for viewing
@@ -48,6 +50,7 @@ class TargetTableVC: UITableViewController {
         // Configure the cell...
         //cell.textLabel?.text = targetNames[indexPath.row]
         cell.textLabel?.text = name.value(forKey: "name") as? String
+        cell.textLabel?.textColor = .white
         
         return cell
     }
