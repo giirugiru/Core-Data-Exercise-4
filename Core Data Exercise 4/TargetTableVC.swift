@@ -19,6 +19,7 @@ class TargetTableVC: UITableViewController {
     
     // Initialize NSManagedObject as array var
     var targetNames: [NSManagedObject] = []
+    //var namename: [name]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -183,11 +184,11 @@ class TargetTableVC: UITableViewController {
     
     
 //     MARK: Function to delete data from Core Data
-//    
+//
 //        func deleteData(){
 //            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Person")
 //            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-//    
+//
 //            do {
 //                try myPersistentStoreCoordinator.execute(deleteRequest, with: myContext)
 //            } catch let error as NSError {
