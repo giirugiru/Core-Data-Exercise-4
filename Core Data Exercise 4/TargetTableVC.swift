@@ -17,6 +17,7 @@ class TargetTableVC: UITableViewController {
     //var targetName: [String] = []
     //var targetName: [String] = ["Alpha","Beta","Omega"]
     
+    // Initialize NSManagedObject as array var
     var targetNames: [NSManagedObject] = []
     
     override func viewDidLoad() {
@@ -55,25 +56,37 @@ class TargetTableVC: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+    
     @IBAction func AddButtonTapped(_ sender: UIBarButtonItem) {
-        alert()
+        addData()
     }
     
     // MARK: Textfield alert to add new data
-    func alert(){
+    func addData(){
         
         // Pass textfield input to a variable
         var textField = UITextField()
         
         let alert = UIAlertController(title: "Add Target Name", message: "", preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title: "Save", style: .default) { (saveAction) in
+        let save = UIAlertAction(title: "Save", style: .default) { (saveAction) in
             //self.targetName.append(textField.text!)
             
             // MARK: Save data to Core Data
+            if textField.text != "" {
             self.saveData(name: textField.text!)
             self.tableView.reloadData()
-            
+            } else {
+                // Validate if the textfield empty
+                let emptyAlert = UIAlertController(title: "Name cannot be empty", message: "", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                emptyAlert.addAction(okAction)
+                self.present(emptyAlert, animated: true, completion: nil)
+                print("Data cannot be empty")
+            }
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -84,7 +97,7 @@ class TargetTableVC: UITableViewController {
         }
         
         // Adding action to alert
-        alert.addAction(saveAction)
+        alert.addAction(save)
         alert.addAction(cancel)
         
         // Presenting the alert
@@ -97,28 +110,23 @@ class TargetTableVC: UITableViewController {
         
         
         // Template code to activate core data
-        guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
+        let managedContext = appDelegate.persistentContainer.viewContext
         
         // Add entity name here
-        let entity =
-            NSEntityDescription.entity(forEntityName: "Person",
-                                       in: managedContext)!
+        let entity = NSEntityDescription.entity(forEntityName: "Person", in: managedContext)!
         
-        let person = NSManagedObject(entity: entity,
-                                     insertInto: managedContext)
+        let data = NSManagedObject(entity: entity, insertInto: managedContext)
         
         // Add attribute name here
-        person.setValue(name, forKeyPath: "name")
+        data.setValue(name, forKeyPath: "name")
         
         // Append data to core data
         do {
             try managedContext.save()
-            targetNames.append(person)
+            targetNames.append(data)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
@@ -129,15 +137,13 @@ class TargetTableVC: UITableViewController {
     func fetchData(){
         
         // Template code to activate core data
-        guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
         let managedContext = appDelegate.persistentContainer.viewContext
         
         // Add entity name here
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "Person")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
         
         // Fetch data to existing array
         do {
@@ -148,18 +154,46 @@ class TargetTableVC: UITableViewController {
         }
     }
     
-    // MARK: Function to delete data from Core Data
+//    func deleteData(){
+//        //let items = list.mutableSetValue(forKey: "items")
+//        //let data = targetNames.mutable
+//
+//        //if let anyItem = items.anyObject() as? NSManagedObject {
+////            managedObjectContext.delete(anyItem)
+////        }
+//
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+//            return
+//        }
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//
+//        // Add entity name here
+//        let entity = NSEntityDescription.entity(forEntityName: "Person", in: managedContext)!
+//
+//        let person = NSManagedObject(entity: entity, insertInto: managedContext)
+//
+//        // Add attribute name here
+//        let data = person.mutableSetValue(forKey: "name")
+//
+//        if let anyItem = data.anyObject() as? NSManagedObject {
+//            managedObjectContext.delete(anyItem)
+//        }
+//    }
     
-    //    func deleteData(){
-    //        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Person")
-    //        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-    //
-    //        do {
-    //            try myPersistentStoreCoordinator.execute(deleteRequest, with: myContext)
-    //        } catch let error as NSError {
-    //            // TODO: handle the error
-    //        }
-    //    }
+    
+    
+//     MARK: Function to delete data from Core Data
+//    
+//        func deleteData(){
+//            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Person")
+//            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+//    
+//            do {
+//                try myPersistentStoreCoordinator.execute(deleteRequest, with: myContext)
+//            } catch let error as NSError {
+//                // TODO: handle the error
+//            }
+//        }
     
     
     
