@@ -130,8 +130,7 @@ class TargetTableVC: UITableViewController {
                 UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
+        let managedContext = appDelegate.persistentContainer.viewContext
         
         // Add entity name here
         let fetchRequest =
@@ -140,6 +139,7 @@ class TargetTableVC: UITableViewController {
         // Fetch data to existing array
         do {
             targetNames = try managedContext.fetch(fetchRequest)
+            print(targetNames.count)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
