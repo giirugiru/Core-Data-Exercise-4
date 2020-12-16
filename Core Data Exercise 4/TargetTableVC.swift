@@ -150,17 +150,33 @@ class TargetTableVC: UITableViewController {
     
     // MARK: Function to delete data from Core Data
     
-    //    func deleteData(){
-    //        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Person")
-    //        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-    //
-    //        do {
-    //            try myPersistentStoreCoordinator.execute(deleteRequest, with: myContext)
-    //        } catch let error as NSError {
-    //            // TODO: handle the error
-    //        }
-    //    }
-    
-    
+        func deleteData(){
+            guard let appDelegate =
+                    UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            let managedContext = appDelegate.persistentContainer.viewContext
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Person")
+//            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+          
+            do {
+                let dataToDelete = try managedContext.fetch(fetchRequest) [0] as! NSManagedObject
+                managedContext.delete(dataToDelete)
+//                try myPersistentStoreCoordinator.execute(deleteRequest, with: myContext)
+                try managedContext.save()
+            } catch let error{
+                // TODO: handle the error
+            }
+        }
     
 }
+//ini si action nya
+//extension TargetTableVC{
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete{
+//            delete(retrieve()[indexPath.row].person)
+//
+//            tableUser.reloadData()
+//        }
+//    }
+//}
