@@ -54,12 +54,33 @@ class TargetTableVC: UITableViewController {
         cell.textLabel?.text = name.value(forKey: "name") as? String
         cell.textLabel?.textColor = .white
         
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
+        
+        // To toggle checkmarks
+        //targetNames[indexPath.row].done = !targetNames[indexPath.row].done
+        //tableView.reloadData()
+        
+        // Gray-thing animation when cell is tapped
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
+    
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            let commit = targetNames[indexPath.row]
+//            container.viewContext.delete(commit)
+//            commits.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//
+//            saveContext()
+//        }
+//    }
+    
     
     @IBAction func AddButtonTapped(_ sender: UIBarButtonItem) {
         addData()
