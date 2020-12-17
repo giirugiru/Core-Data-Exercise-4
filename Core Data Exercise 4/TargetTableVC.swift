@@ -157,6 +157,7 @@ class TargetTableVC: UITableViewController {
             }
             let managedContext = appDelegate.persistentContainer.viewContext
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Person")
+            fetchRequest.predicate = NSPredicate(format: "name = %@", targetNames)
 //            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
           
             do {
@@ -166,17 +167,19 @@ class TargetTableVC: UITableViewController {
                 try managedContext.save()
             } catch let error{
                 // TODO: handle the error
+                print(error)
             }
         }
     
 }
-//ini si action nya
-//extension TargetTableVC{
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete{
-//            delete(retrieve()[indexPath.row].person)
-//
-//            tableUser.reloadData()
-//        }
-//    }
-//}
+
+extension TargetTableVC{
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete{
+            delete(targetNames[indexPath.row])
+//            tableView.reloadData()
+           
+        }
+    }
+}
